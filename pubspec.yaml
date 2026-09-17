@@ -1,6 +1,6 @@
 name: flutter_easy_bugly
 description: "为移动开发者提供专业的异常上报和运营统计，帮助开发者快速发现并解决异常，同时掌握产品运营动态，及时跟进用户反馈"
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/OctMon/flutter_easy_bugly
 
 environment:
