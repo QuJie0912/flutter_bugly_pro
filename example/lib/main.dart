@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easy/flutter_easy.dart';
-import 'package:flutter_easy_bugly/flutter_easy_bugly.dart';
+import 'package:flutter_bugly_pro/flutter_bugly_pro.dart';
 
 import 'app.dart';
 
@@ -25,5 +25,5 @@ void main() async {
 
 Future<void> initApp() async {
   // TODO: set appId
-  FlutterEasyBugly.init(iOSAppId: '', androidAppId: '', channel: appChannel);
+  FlutterBuglyPro.init(iOSAppId: '', androidAppId: '', channel: appChannel);
 }

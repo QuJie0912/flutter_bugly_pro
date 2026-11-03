@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import XCTest
 
-@testable import flutter_easy_bugly
+@testable import flutter_bugly_pro
 
 // This demonstrates a simple unit test of the Swift portion of this plugin's implementation.
 //
@@ -11,7 +11,7 @@ import XCTest
 class RunnerTests: XCTestCase {
 
   func testGetPlatformVersion() {
-    let plugin = FlutterEasyBuglyPlugin()
+    let plugin = FlutterBuglyProPlugin()
 
     let call = FlutterMethodCall(methodName: "getPlatformVersion", arguments: [])
 

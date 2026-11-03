@@ -1,1 +1,1 @@
-void FlutterEasyBuglySimulatorStub(void) {}
+void FlutterBuglyProSimulatorStub(void) {}

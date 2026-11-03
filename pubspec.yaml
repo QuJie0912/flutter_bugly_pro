@@ -1,7 +1,7 @@
-name: flutter_easy_bugly
-description: "为移动开发者提供专业的异常上报和运营统计，帮助开发者快速发现并解决异常，同时掌握产品运营动态，及时跟进用户反馈"
-version: 1.1.1
-homepage: https://github.com/OctMon/flutter_easy_bugly
+name: flutter_bugly_pro
+description: "基于腾讯 Bugly SDK 的封装为移动开发者提供专业的异常上报和运营统计，帮助开发者快速发现并解决异常，同时掌握产品运营动态，及时跟进用户反馈"
+version: 1.0.1
+homepage: https://github.com/OctMon/flutter_bugly_pro
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
@@ -35,10 +35,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.qq.bugly.flutter_easy_bugly
-        pluginClass: FlutterEasyBuglyPlugin
+        package: com.qq.bugly.flutter_bugly_pro
+        pluginClass: FlutterBuglyProPlugin
       ios:
-        pluginClass: FlutterEasyBuglyPlugin
+        pluginClass: FlutterBuglyProPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

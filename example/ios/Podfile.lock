@@ -4,7 +4,7 @@ PODS:
     - Flutter
     - FlutterMacOS
   - Flutter (1.0.0)
-  - flutter_easy_bugly (0.0.1):
+  - flutter_bugly_pro (0.0.1):
     - Bugly (= 2.6.1)
     - Flutter
   - integration_test (0.0.1):
@@ -25,7 +25,7 @@ PODS:
 DEPENDENCIES:
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/darwin`)
   - Flutter (from `Flutter`)
-  - flutter_easy_bugly (from `.symlinks/plugins/flutter_easy_bugly/ios`)
+  - flutter_bugly_pro (from `.symlinks/plugins/flutter_bugly_pro/ios`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -42,8 +42,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/connectivity_plus/darwin"
   Flutter:
     :path: Flutter
-  flutter_easy_bugly:
-    :path: ".symlinks/plugins/flutter_easy_bugly/ios"
+  flutter_bugly_pro:
+    :path: ".symlinks/plugins/flutter_bugly_pro/ios"
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
   package_info_plus:
@@ -61,7 +61,7 @@ SPEC CHECKSUMS:
   Bugly: 217ac2ce5f0f2626d43dbaa4f70764c953a26a31
   connectivity_plus: 3f6c9057f4cd64198dc826edfb0542892f825343
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  flutter_easy_bugly: 22945a4d19454020fdd382db008eef56a0eb0c2a
+  flutter_bugly_pro: 22945a4d19454020fdd382db008eef56a0eb0c2a
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
   package_info_plus: 580e9a5f1b6ca5594e7c9ed5f92d1dfb2a66b5e1
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564

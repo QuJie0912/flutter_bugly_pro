@@ -1,6 +1,6 @@
-# flutter_easy_bugly_example
+# flutter_bugly_pro_example
 
-Demonstrates how to use the flutter_easy_bugly plugin.
+Demonstrates how to use the flutter_bugly_pro plugin.
 
 ## Getting Started
 

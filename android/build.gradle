@@ -1,4 +1,4 @@
-group = "com.qq.bugly.flutter_easy_bugly"
+group = "com.qq.bugly.flutter_bugly_pro"
 version = "1.0"
 
 buildscript {
@@ -23,7 +23,7 @@ apply plugin: "com.android.library"
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace = "com.qq.bugly.flutter_easy_bugly"
+        namespace = "com.qq.bugly.flutter_bugly_pro"
     }
 
     compileSdk = 34
