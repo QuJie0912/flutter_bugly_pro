@@ -1,5 +1,5 @@
 name: flutter_bugly_pro
-description: "基于腾讯 Bugly SDK 的封装为移动开发者提供专业的异常上报和运营统计，帮助开发者快速发现并解决异常，同时掌握产品运营动态，及时跟进用户反馈"
+description: "基于腾讯 Bugly SDK 封装，为移动开发者提供专业的异常上报和运营统计，帮助开发者快速发现并解决异常，同时掌握产品运营动态，及时跟进用户反馈"
 version: 1.0.1
 homepage: https://github.com/QuJie0912/flutter_bugly_pro
 
