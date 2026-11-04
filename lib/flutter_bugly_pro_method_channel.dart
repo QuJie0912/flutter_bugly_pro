@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import 'flutter_bugly_pro_platform_interface.dart';
 import 'src/bean/init_result_info.dart';
+import 'src/defaults.dart';
 import 'src/types/log_level.dart';
 
 /// An implementation of [FlutterBuglyProPlatform] that uses method channels.
@@ -32,7 +33,7 @@ class MethodChannelFlutterBuglyPro extends FlutterBuglyProPlatform {
     bool isBuglyLogUpload = true,
     double blockMonitorTimeout = 3,
     bool unexpectedTerminatingDetectionEnable = true,
-    bool enableBlockMonitor = true,
+    bool enableBlockMonitor = defaultEnableBlockMonitor,
     bool symbolicateInProcessEnable = true,
     int? reportLogLevel,
     String? appKey,

@@ -3,6 +3,7 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'flutter_bugly_pro_method_channel.dart';
 import 'src/bean/init_result_info.dart';
+import 'src/defaults.dart';
 import 'src/types/log_level.dart';
 
 abstract class FlutterBuglyProPlatform extends PlatformInterface {
@@ -43,7 +44,7 @@ abstract class FlutterBuglyProPlatform extends PlatformInterface {
     bool isBuglyLogUpload = true,
     double blockMonitorTimeout = 3,
     bool unexpectedTerminatingDetectionEnable = true,
-    bool enableBlockMonitor = true,
+    bool enableBlockMonitor = defaultEnableBlockMonitor,
     bool symbolicateInProcessEnable = true,
     int? reportLogLevel,
     String? appKey,

@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 
 import '../flutter_bugly_pro_platform_interface.dart';
 import 'bean/init_result_info.dart';
+import 'defaults.dart';
 import 'types/log_level.dart';
 
 class FlutterBuglyPro {
@@ -34,7 +35,7 @@ class FlutterBuglyPro {
     //iOS
     double blockMonitorTimeout = 3, //卡顿阀值
     bool unexpectedTerminatingDetectionEnable = true, //非正常退出事件(SIGKILL)
-    bool enableBlockMonitor = true, //卡顿监控
+    bool enableBlockMonitor = defaultEnableBlockMonitor, //卡顿监控
     bool symbolicateInProcessEnable = true, //进程内还原符号
     int? reportLogLevel, // 设置自定义日志上报的级别，默认不上报自定义日志
     //ohos

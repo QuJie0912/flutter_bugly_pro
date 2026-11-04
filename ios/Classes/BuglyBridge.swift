@@ -9,6 +9,7 @@ struct BuglyBridgeConfig {
     var appVersion: String?
     var unexpectedTerminatingDetectionEnable: Bool = false
     var blockMonitorEnable: Bool = false
+    var blockMonitorTimeout: TimeInterval = 3
     var debugMode: Bool = false
     var symbolicateInProcessEnable: Bool = false
     var reportLogLevel: Int?
@@ -26,6 +27,7 @@ enum BuglyBridge {
         }
         buglyConfig.unexpectedTerminatingDetectionEnable = config.unexpectedTerminatingDetectionEnable
         buglyConfig.blockMonitorEnable = config.blockMonitorEnable
+        buglyConfig.blockMonitorTimeout = config.blockMonitorTimeout
         buglyConfig.debugMode = config.debugMode
         buglyConfig.symbolicateInProcessEnable = config.symbolicateInProcessEnable
         if let reportLogLevel = config.reportLogLevel,

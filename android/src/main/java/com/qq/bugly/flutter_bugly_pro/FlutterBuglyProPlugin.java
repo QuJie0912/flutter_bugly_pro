@@ -113,8 +113,16 @@ public class FlutterBuglyProPlugin implements FlutterPlugin, MethodCallHandler, 
             }
             result(null);
         } else if (call.method.equals("postCatchedException")) {
-            postException(call);
-            result(null);
+            try {
+                postException(call);
+                result(null);
+            } catch (Exception e) {
+                Log.e("FlutterBugly", "postCatchedException failed: " + e.getMessage());
+                if (result != null && !isResultSubmitted) {
+                    result.error("postCatchedException", e.getMessage(), null);
+                    isResultSubmitted = true;
+                }
+            }
         } else if (call.method.equals("log")) {
             log(call);
             result(null);
@@ -221,8 +229,10 @@ public class FlutterBuglyProPlugin implements FlutterPlugin, MethodCallHandler, 
         if (call.hasArgument("crash_data")) {
             data = call.argument("crash_data");
         }
-        if (TextUtils.isEmpty(detail)) return;
-        CrashReport.postException(8, TextUtils.isEmpty(type) ? message : type, message, detail, data);
+        if (detail == null) {
+            detail = "";
+        }
+        CrashReport.postException(8, type == null || type.length() == 0 ? message : type, message, detail, data);
     }
 
     private void log(MethodCall call) {

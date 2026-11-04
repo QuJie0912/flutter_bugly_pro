@@ -21,7 +21,8 @@ public class FlutterBuglyProPlugin: NSObject, FlutterPlugin {
             config.channel = nonBlank(arguments?["channel"] as? String)
             config.appVersion = nonBlank(arguments?["appVersion"] as? String)
             config.unexpectedTerminatingDetectionEnable = boolValue(arguments?["unexpectedTerminatingDetectionEnable"])
-            config.blockMonitorEnable = boolValue(arguments?["blockMonitorEnable"])
+            config.blockMonitorEnable = boolValue(arguments?["enableBlockMonitor"])
+            config.blockMonitorTimeout = doubleValue(arguments?["blockMonitorTimeout"], fallback: 3)
             config.debugMode = boolValue(arguments?["debugMode"])
             config.symbolicateInProcessEnable = boolValue(arguments?["symbolicateInProcessEnable"])
             config.reportLogLevel = (arguments?["reportLogLevel"] as? NSNumber)?.intValue
@@ -103,6 +104,13 @@ public class FlutterBuglyProPlugin: NSObject, FlutterPlugin {
 
     private func boolValue(_ value: Any?) -> Bool {
         return (value as? Bool) ?? false
+    }
+
+    private func doubleValue(_ value: Any?, fallback: Double) -> Double {
+        guard let number = value as? NSNumber, number.doubleValue > 0 else {
+            return fallback
+        }
+        return number.doubleValue
     }
 
     private func isBlank(_ value: Any?) -> Bool {

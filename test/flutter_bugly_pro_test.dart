@@ -1,6 +1,7 @@
 import 'package:flutter_bugly_pro/flutter_bugly_pro.dart';
 import 'package:flutter_bugly_pro/flutter_bugly_pro_method_channel.dart';
 import 'package:flutter_bugly_pro/flutter_bugly_pro_platform_interface.dart';
+import 'package:flutter_bugly_pro/src/defaults.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -25,7 +26,7 @@ class MockFlutterBuglyProPlatform
     bool isBuglyLogUpload = true,
     double blockMonitorTimeout = 3,
     bool unexpectedTerminatingDetectionEnable = true,
-    bool enableBlockMonitor = true,
+    bool enableBlockMonitor = defaultEnableBlockMonitor,
     bool symbolicateInProcessEnable = true,
     int? reportLogLevel,
     String? appKey,

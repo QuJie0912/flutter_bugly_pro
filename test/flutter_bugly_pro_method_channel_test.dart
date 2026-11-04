@@ -45,9 +45,24 @@ void main() {
     expect(arguments['channel'], 'channel');
     expect(arguments['initDelay'], 0);
     expect(arguments['debugMode'], kDebugMode);
+    expect(arguments['enableBlockMonitor'], isTrue);
+    expect(arguments['blockMonitorTimeout'], 3.0);
     expect(arguments.containsKey('deviceId'), isTrue);
     expect(arguments.containsKey('appKey'), isTrue);
     expect(arguments.keys.length, 19);
+  });
+
+  test('init forwards explicit enableBlockMonitor=false', () async {
+    await platform.init(
+      androidAppId: 'android',
+      iOSAppId: 'ios',
+      enableBlockMonitor: false,
+      blockMonitorTimeout: 5,
+    );
+
+    final Map<dynamic, dynamic> arguments = calls.single.arguments as Map;
+    expect(arguments['enableBlockMonitor'], isFalse);
+    expect(arguments['blockMonitorTimeout'], 5.0);
   });
 
   test('user methods send official protocol', () async {

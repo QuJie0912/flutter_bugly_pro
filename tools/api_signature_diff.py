@@ -6,6 +6,19 @@ from pathlib import Path
 
 OFFICIAL = Path("agent/packages/flutter_bugly-1.1.1/lib/src/flutter_bugly.dart")
 OURS = Path("lib/src/flutter_bugly_pro.dart")
+DEFAULTS = Path("lib/src/defaults.dart")
+
+
+def resolve_constants(text):
+    """把 lib/src/defaults.dart 中的常量折叠为字面量，保证默认值按语义比较。"""
+    if not DEFAULTS.exists():
+        return text
+    source = DEFAULTS.read_text(encoding="utf-8")
+    for m in re.finditer(
+        r"const\s+(?:bool|int|double)\s+([A-Za-z_]\w*)\s*=\s*([^;]+);", source
+    ):
+        text = re.sub(rf"\b{m.group(1)}\b", m.group(2).strip(), text)
+    return text
 
 
 def class_body(path, class_name):
@@ -55,7 +68,9 @@ def public_static_signatures(body):
 
 
 official = public_static_signatures(class_body(OFFICIAL, "FlutterBugly"))
-ours = public_static_signatures(class_body(OURS, "FlutterBuglyPro"))
+ours = public_static_signatures(
+    resolve_constants(class_body(OURS, "FlutterBuglyPro"))
+)
 
 print(f"official public static members: {len(official)}")
 print(f"ours     public static members: {len(ours)}")
