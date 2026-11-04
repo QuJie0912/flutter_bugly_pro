@@ -25,5 +25,10 @@ void main() async {
 
 Future<void> initApp() async {
   // TODO: set appId
-  FlutterBuglyPro.init(iOSAppId: '', androidAppId: '', channel: appChannel);
+  final InitResultInfo result = await FlutterBuglyPro.init(
+    iOSAppId: '',
+    androidAppId: '',
+    channel: appChannel,
+  );
+  debugPrint('Bugly init: ${result.isSuccess} ${result.message}');
 }

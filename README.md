@@ -21,14 +21,30 @@ dependencies:
 ```
 
 ### 基础使用
+公开 API 与官方 `flutter_bugly` 1.1.1 逐项一致（类名保留为 `FlutterBuglyPro`）。
+
 ```dart
 // 初始化
-FlutterBuglyPro.init(appId: "你的BuglyAppId", channel: "渠道名");
+final InitResultInfo result = await FlutterBuglyPro.init(
+  androidAppId: "你的 Android AppId",
+  iOSAppId: "你的 iOS AppId",
+  channel: "渠道名",
+);
 // 设置用户标识
-FlutterBuglyPro.setUserIdentifier(userId: "xxx");
+await FlutterBuglyPro.setUserId("xxx");
 // 上报自定义异常
-FlutterBuglyPro.reportException(exception: "异常信息", stackTrace: stackTrace.toString());
+await FlutterBuglyPro.uploadException(
+  message: "异常信息",
+  detail: stackTrace.toString(),
+);
+// 自动捕获异常
+FlutterBuglyPro.postCatchedException(() {
+  runApp(const MyApp());
+});
 ```
+
+> iOS 原生仅实现 `init`、`postCatchedException`（对应 `uploadException`）、`setUserId`、`setUserTag`、`setAppVersion`、`putUserData`、`log`；
+> `setAppChannel`、`setDeviceModel`、`setAppPackageName`、`setDeviceID` 在 iOS 上抛 `MissingPluginException`（与官方行为一致，仅 Android 可用）。
 
 ## iOS 模拟器适配原理
 Bugly 2.6.1 版本没有提供 arm64 架构的 iOS 模拟器切片。

@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'flutter_bugly_pro_method_channel.dart';
+import 'src/bean/init_result_info.dart';
+import 'src/types/log_level.dart';
 
 abstract class FlutterBuglyProPlatform extends PlatformInterface {
   /// Constructs a FlutterBuglyProPlatform.
@@ -23,15 +26,59 @@ abstract class FlutterBuglyProPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  void init({required String iOSAppId, required String androidAppId, String? channel}) {
-    throw UnimplementedError('init() has not been implemented.');
-  }
+  Future<InitResultInfo> init({
+    String? androidAppId,
+    String? iOSAppId,
+    String? ohosAppId,
+    String? channel,
+    String? deviceId,
+    String? appVersion,
+    String? userId,
+    bool debugMode = kDebugMode,
+    int initDelay = 0,
+    String? deviceModel,
+    String? appPackage,
+    bool enableCatchAnrTrace = false,
+    bool enableRecordAnrMainStack = true,
+    bool isBuglyLogUpload = true,
+    double blockMonitorTimeout = 3,
+    bool unexpectedTerminatingDetectionEnable = true,
+    bool enableBlockMonitor = true,
+    bool symbolicateInProcessEnable = true,
+    int? reportLogLevel,
+    String? appKey,
+    String? buildNum,
+  });
 
-  void setUserIdentifier(String userId) {
-    throw UnimplementedError('setUserIdentifier() has not been implemented.');
-  }
+  Future<Null> setUserId(String userId);
 
-  void reportException({required String exception, required String stackTrace}) {
-    throw UnimplementedError('reportException() has not been implemented.');
-  }
+  Future<Null> setUserTag(int userSceneTag);
+
+  Future<Null> putUserData({
+    required String key,
+    required String value,
+  });
+
+  Future<Null> uploadException({
+    required String message,
+    required String detail,
+    String? type,
+    Map? data,
+  });
+
+  Future<Null> setAppChannel(String channel);
+
+  Future<Null> setDeviceModel(String deviceModel);
+
+  Future<Null> setAppPackageName(String appPackage);
+
+  Future<Null> setAppVersion(String appVersion);
+
+  Future<Null> setDeviceID(String deviceId);
+
+  Future<Null> log({
+    required String tag,
+    required String message,
+    LogLevel level = LogLevel.INFO,
+  });
 }
