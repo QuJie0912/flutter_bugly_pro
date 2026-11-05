@@ -1,6 +1,6 @@
 name: flutter_bugly_pro
 description: "基于腾讯 Bugly SDK 封装的 Flutter 插件，解决官方SDK缺少arm64模拟器架构切片引发的编译失败问题"
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/QuJie0912/flutter_bugly_pro
 
 environment:

@@ -2,6 +2,9 @@ import Flutter
 import UIKit
 
 public class FlutterBuglyProPlugin: NSObject, FlutterPlugin {
+    /// type 缺失时的稳定默认分类（避免空 name 导致问题无法聚合/详情不可读）
+    private static let defaultErrorName = "FlutterEvent"
+
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "flutter_bugly_pro", binaryMessenger: registrar.messenger())
         let instance = FlutterBuglyProPlugin()
@@ -32,23 +35,30 @@ public class FlutterBuglyProPlugin: NSObject, FlutterPlugin {
             }
             result(resultJson(success: true, appId: appId, message: "Bugly 初始化成功"))
         case "postCatchedException":
+            // 空 detail（无堆栈的信息类事件）不得清空 message/type：
+            // name/reason 仍需可读；callStack 传空数组即可
             var type = arguments?["crash_type"] as? String
-            var message = arguments?["crash_message"] as? String
+            let message = arguments?["crash_message"] as? String
             let detail = arguments?["crash_detail"] as? String
-            if isBlank(detail) {
-                message = ""
-            }
             if isBlank(type) {
-                type = message
+                type = Self.defaultErrorName
             }
-            let callStack: [String] = detail.map { ($0 as NSString).components(separatedBy: "") } ?? []
+            let reason = isBlank(message) ? (type ?? Self.defaultErrorName) : (message ?? "")
+            let callStack: [String]
+            if let detail = detail, !isBlank(detail) {
+                callStack = (detail as NSString)
+                    .components(separatedBy: .newlines)
+                    .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+            } else {
+                callStack = []
+            }
             var extraInfo: [AnyHashable: Any] = [:]
             if let data = arguments?["crash_data"] as? [AnyHashable: Any] {
                 for (key, value) in data {
                     extraInfo[key] = value
                 }
             }
-            BuglyBridge.reportException(name: type ?? "", reason: message ?? "", callStack: callStack, extraInfo: extraInfo)
+            BuglyBridge.reportException(name: type ?? Self.defaultErrorName, reason: reason, callStack: callStack, extraInfo: extraInfo)
             result(nil)
         case "setUserId":
             if let userId = arguments?["userId"] as? String, !isBlank(userId) {

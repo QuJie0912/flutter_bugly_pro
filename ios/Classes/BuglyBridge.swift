@@ -53,7 +53,7 @@ enum BuglyBridge {
         Bugly.updateAppVersion(version)
     }
 
-    static func reportException(name: String, reason: String, callStack: [Any], extraInfo: [AnyHashable: Any]) {
+    static func reportException(name: String, reason: String, callStack: [String], extraInfo: [AnyHashable: Any]) {
         Bugly.reportException(withCategory: 5, name: name, reason: reason,
                               callStack: callStack, extraInfo: extraInfo, terminateApp: false)
     }
@@ -74,7 +74,7 @@ enum BuglyBridge {
 
     static func updateAppVersion(_ version: String) {}
 
-    static func reportException(name: String, reason: String, callStack: [Any], extraInfo: [AnyHashable: Any]) {}
+    static func reportException(name: String, reason: String, callStack: [String], extraInfo: [AnyHashable: Any]) {}
 
     static func log(level: Int, tag: String?, message: String?) {}
 }
